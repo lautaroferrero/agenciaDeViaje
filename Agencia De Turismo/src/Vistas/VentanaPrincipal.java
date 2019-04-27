@@ -242,7 +242,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
         ClientesAgregar f = new ClientesAgregar();
         f.setVisible(true);
-        escritorio.add(f).setSize(380, 275);
+        escritorio.add(f).setSize(1000, 750);
         escritorio.moveToFront(f);
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
