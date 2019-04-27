@@ -50,9 +50,17 @@ public class AgenciaDeTurismo {
     public static void main(String[] args) {
         // TODO code application logic here
 
- VentanaPrincipal vm = new VentanaPrincipal();
-vm.setVisible(true);
-     
+/* VentanaPrincipal vm = new VentanaPrincipal();
+vm.setVisible(true); */
+try {
+Compra compra = new Compra();
+Conexion conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
+CompraData pd = new CompraData(conexion);
+System.out.println(pd.listadoCompra().isEmpty());
+} catch (Exception ex) {
+         System.out.println(ex.getMessage());
+       
+ }
     }
     
 }

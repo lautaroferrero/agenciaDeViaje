@@ -53,7 +53,7 @@ public class Compra {
         return paquete;
     }
 
-    public void setPaquete(int idPaquete) {
+    public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
     }
 

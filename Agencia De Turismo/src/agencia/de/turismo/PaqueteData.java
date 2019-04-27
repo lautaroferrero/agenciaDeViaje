@@ -84,8 +84,10 @@ public List<Paquete> listadoPaquete() {
                 a = new Paquete(t,s); 
                 
                 a.setId(rs.getInt("id"));
-                a.setIdAlojamiento(rs.getInt("id_alojamiento"));
-                a.setIdTraslado(rs.getInt("id_traslado"));
+                Alojamiento alojamiento = new Alojamiento(rs.getInt("id_alojamiento"));
+                a.setAlojamiento(alojamiento);
+                Traslado traslado = new Traslado(rs.getInt("id_traslado"));
+                a.setTraslado(traslado);
                 b.add(a);
             }
          statement.close();

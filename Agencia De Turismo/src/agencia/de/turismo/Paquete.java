@@ -17,6 +17,9 @@ public class Paquete {
     public Paquete() {
         this.id = -1;
     }
+    public Paquete(int id) {
+        this.id = id;
+    }
     public Paquete(int id, Traslado traslado, Alojamiento alojamiento) {
         this.id = id;
         this.traslado = traslado;

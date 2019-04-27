@@ -17,6 +17,9 @@ public class Traslado {
     public Traslado() {
         this.id = -1;
     }
+      public Traslado(int id) {
+        this.id = id;
+    }
     public Traslado(int id, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro) {
     this.id = id;
     this.tipoDeTransporte = tipoDeTransporte;

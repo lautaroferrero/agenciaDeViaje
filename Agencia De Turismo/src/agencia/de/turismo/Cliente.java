@@ -18,6 +18,9 @@ public class Cliente {
 public Cliente() {
     this.id = -1;
          }
+public Cliente(int id) {
+    this.id = id;
+         }
     public Cliente(int id, String nombre, String documento, String celular) {
         this.id = id;
         this.nombre = nombre;

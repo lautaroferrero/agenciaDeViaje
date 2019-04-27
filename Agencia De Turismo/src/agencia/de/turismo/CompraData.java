@@ -82,8 +82,11 @@ public List<Compra> listadoCompra() {
          while(rs.next()) {
                 a = new Compra(); 
                 a.setId(rs.getInt("id"));
-                a.setIdCliente(rs.getInt("id_cliente"));
-                a.setIdPaquete(rs.getInt("id_paquete"));
+                Cliente cliente = new Cliente(rs.getInt("id_cliente"));
+                a.setCliente(cliente);
+                
+                Paquete paquete = new Paquete(rs.getInt("id_paquete"));
+                a.setPaquete(paquete);
                 a.setCantidadDePasajeros(rs.getInt("cantidad_pasajeros"));
                 b.add(a);
             }

@@ -19,6 +19,9 @@ public class Alojamiento {
         public Alojamiento(){
             this.id = -1;
         }
+        public Alojamiento(int id){
+            this.id = id;
+        }
        public Alojamiento(int id, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
         this.id = id;
         this.direccion = direccion;
