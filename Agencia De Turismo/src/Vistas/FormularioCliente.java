@@ -112,7 +112,7 @@ public class FormularioCliente extends javax.swing.JInternalFrame {
           Cliente c = new Cliente();
           Conexion conexion = null;
         try {
-            conexion = new Conexion("jdbc:mysql://localhost/agencia de turismo", "root", "");
+            conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FormularioCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

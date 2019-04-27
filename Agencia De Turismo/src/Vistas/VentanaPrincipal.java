@@ -30,18 +30,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         btn_Salir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenu();
         AgregarCliente = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        Alojamiento = new javax.swing.JMenu();
+        AgregarAlojamiento = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        Traslado = new javax.swing.JMenu();
+        AgregarTraslado = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        Paquete = new javax.swing.JMenu();
+        AgregarPaquete = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        compra = new javax.swing.JMenu();
+        AgregarCompra = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
         jMenu4.setText("jMenu4");
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenu5.setText("jMenu5");
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem5.setText("jMenuItem5");
+
+        jMenuItem9.setText("jMenuItem9");
+
+        jMenuItem14.setText("jMenuItem14");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,9 +89,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
         Cliente.setText("Cliente");
 
         AgregarCliente.setText("Agregar");
@@ -66,10 +99,80 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         Cliente.add(AgregarCliente);
 
+        jMenuItem3.setText("Borrar");
+        Cliente.add(jMenuItem3);
+
+        jMenuItem4.setText("Actualizar");
+        Cliente.add(jMenuItem4);
+
+        jMenuItem6.setText("Listado");
+        Cliente.add(jMenuItem6);
+
         jMenuBar1.add(Cliente);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        Alojamiento.setText("Alojamiento");
+
+        AgregarAlojamiento.setText("Agregar");
+        Alojamiento.add(AgregarAlojamiento);
+
+        jMenuItem7.setText("Borrar");
+        Alojamiento.add(jMenuItem7);
+
+        jMenuItem8.setText("Actualizar");
+        Alojamiento.add(jMenuItem8);
+
+        jMenuItem10.setText("Listado");
+        Alojamiento.add(jMenuItem10);
+
+        jMenuBar1.add(Alojamiento);
+
+        Traslado.setText("Traslado");
+
+        AgregarTraslado.setText("Agregar");
+        Traslado.add(AgregarTraslado);
+
+        jMenuItem11.setText("Borrar");
+        Traslado.add(jMenuItem11);
+
+        jMenuItem12.setText("Actualizar");
+        Traslado.add(jMenuItem12);
+
+        jMenuItem13.setText("Listado");
+        Traslado.add(jMenuItem13);
+
+        jMenuBar1.add(Traslado);
+
+        Paquete.setText("Paquete");
+
+        AgregarPaquete.setText("Agregar");
+        Paquete.add(AgregarPaquete);
+
+        jMenuItem15.setText("Borrar");
+        Paquete.add(jMenuItem15);
+
+        jMenuItem16.setText("Actualizar");
+        Paquete.add(jMenuItem16);
+
+        jMenuItem17.setText("Listado");
+        Paquete.add(jMenuItem17);
+
+        jMenuBar1.add(Paquete);
+
+        compra.setText("Compra");
+
+        AgregarCompra.setText("Agregar");
+        compra.add(AgregarCompra);
+
+        jMenuItem18.setText("Borrar");
+        compra.add(jMenuItem18);
+
+        jMenuItem19.setText("Actualizar");
+        compra.add(jMenuItem19);
+
+        jMenuItem20.setText("Listado");
+        compra.add(jMenuItem20);
+
+        jMenuBar1.add(compra);
 
         setJMenuBar(jMenuBar1);
 
@@ -78,14 +181,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(496, Short.MAX_VALUE)
+                .addContainerGap(527, Short.MAX_VALUE)
                 .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -141,14 +244,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AgregarAlojamiento;
     private javax.swing.JMenuItem AgregarCliente;
+    private javax.swing.JMenuItem AgregarCompra;
+    private javax.swing.JMenuItem AgregarPaquete;
+    private javax.swing.JMenuItem AgregarTraslado;
+    private javax.swing.JMenu Alojamiento;
     private javax.swing.JMenu Cliente;
+    private javax.swing.JMenu Paquete;
+    private javax.swing.JMenu Traslado;
     private javax.swing.JButton btn_Salir;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu compra;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
