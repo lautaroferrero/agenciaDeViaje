@@ -35,11 +35,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
-        btn_Salir = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cliente = new javax.swing.JMenu();
         AgregarCliente = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        cliente_borrar = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         Alojamiento = new javax.swing.JMenu();
@@ -79,19 +80,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItem14.setText("jMenuItem14");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btn_Salir.setText("Salir");
-        btn_Salir.setName("Salir"); // NOI18N
-        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SalirActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        escritorio.setBackground(new java.awt.Color(240, 240, 240));
+        escritorio.setForeground(new java.awt.Color(240, 240, 240));
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 611, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+        );
 
         Cliente.setText("Cliente");
+        Cliente.setContentAreaFilled(false);
+        Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AgregarCliente.setText("Agregar");
+        AgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarClienteActionPerformed(evt);
@@ -99,77 +112,105 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         Cliente.add(AgregarCliente);
 
-        jMenuItem3.setText("Borrar");
-        Cliente.add(jMenuItem3);
+        cliente_borrar.setText("Borrar");
+        cliente_borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cliente_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cliente_borrarActionPerformed(evt);
+            }
+        });
+        Cliente.add(cliente_borrar);
 
         jMenuItem4.setText("Actualizar");
+        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cliente.add(jMenuItem4);
 
         jMenuItem6.setText("Listado");
+        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cliente.add(jMenuItem6);
 
         jMenuBar1.add(Cliente);
 
         Alojamiento.setText("Alojamiento");
+        Alojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AgregarAlojamiento.setText("Agregar");
+        AgregarAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Alojamiento.add(AgregarAlojamiento);
 
         jMenuItem7.setText("Borrar");
+        jMenuItem7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Alojamiento.add(jMenuItem7);
 
         jMenuItem8.setText("Actualizar");
+        jMenuItem8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Alojamiento.add(jMenuItem8);
 
         jMenuItem10.setText("Listado");
+        jMenuItem10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Alojamiento.add(jMenuItem10);
 
         jMenuBar1.add(Alojamiento);
 
         Traslado.setText("Traslado");
+        Traslado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AgregarTraslado.setText("Agregar");
+        AgregarTraslado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Traslado.add(AgregarTraslado);
 
         jMenuItem11.setText("Borrar");
+        jMenuItem11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Traslado.add(jMenuItem11);
 
         jMenuItem12.setText("Actualizar");
+        jMenuItem12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Traslado.add(jMenuItem12);
 
         jMenuItem13.setText("Listado");
+        jMenuItem13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Traslado.add(jMenuItem13);
 
         jMenuBar1.add(Traslado);
 
         Paquete.setText("Paquete");
+        Paquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AgregarPaquete.setText("Agregar");
+        AgregarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paquete.add(AgregarPaquete);
 
         jMenuItem15.setText("Borrar");
+        jMenuItem15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paquete.add(jMenuItem15);
 
         jMenuItem16.setText("Actualizar");
+        jMenuItem16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paquete.add(jMenuItem16);
 
         jMenuItem17.setText("Listado");
+        jMenuItem17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paquete.add(jMenuItem17);
 
         jMenuBar1.add(Paquete);
 
         compra.setText("Compra");
+        compra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AgregarCompra.setText("Agregar");
+        AgregarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.add(AgregarCompra);
 
         jMenuItem18.setText("Borrar");
+        jMenuItem18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.add(jMenuItem18);
 
         jMenuItem19.setText("Actualizar");
+        jMenuItem19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.add(jMenuItem19);
 
         jMenuItem20.setText("Listado");
+        jMenuItem20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.add(jMenuItem20);
 
         jMenuBar1.add(compra);
@@ -180,32 +221,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(527, Short.MAX_VALUE)
-                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(382, Short.MAX_VALUE)
-                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
+    private void cliente_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliente_borrarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btn_SalirActionPerformed
+        
+    }//GEN-LAST:event_cliente_borrarActionPerformed
 
     private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
         // TODO add your handling code here:
-           FormularioCliente f = new FormularioCliente();
+        escritorio.removeAll();
+        escritorio.repaint();
+        ClientesAgregar f = new ClientesAgregar();
         f.setVisible(true);
-     this.add(f).setSize(400,400);
+        escritorio.add(f).setSize(380, 275);
+        escritorio.moveToFront(f);
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
     /**
@@ -253,8 +291,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Cliente;
     private javax.swing.JMenu Paquete;
     private javax.swing.JMenu Traslado;
-    private javax.swing.JButton btn_Salir;
+    private javax.swing.JMenuItem cliente_borrar;
     private javax.swing.JMenu compra;
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -272,7 +312,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
