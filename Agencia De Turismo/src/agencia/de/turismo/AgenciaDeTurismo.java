@@ -52,15 +52,8 @@ public class AgenciaDeTurismo {
 
 /* VentanaPrincipal vm = new VentanaPrincipal();
 vm.setVisible(true); */
-try {
-Compra compra = new Compra();
-Conexion conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
-CompraData pd = new CompraData(conexion);
-System.out.println(pd.listadoCompra().isEmpty());
-} catch (Exception ex) {
-         System.out.println(ex.getMessage());
-       
- }
+VentanaPrincipal v = new VentanaPrincipal();
+        v.setVisible(true);
     }
     
 }

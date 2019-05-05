@@ -39,29 +39,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         Cliente = new javax.swing.JMenu();
-        AgregarCliente = new javax.swing.JMenuItem();
-        cliente_borrar = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        lista_cliente = new javax.swing.JMenuItem();
         Alojamiento = new javax.swing.JMenu();
-        AgregarAlojamiento = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        Traslado = new javax.swing.JMenu();
-        AgregarTraslado = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
         Paquete = new javax.swing.JMenu();
-        AgregarPaquete = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
         compra = new javax.swing.JMenu();
-        AgregarCompra = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
@@ -92,103 +75,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 611, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 418, Short.MAX_VALUE)
         );
 
         Cliente.setText("Cliente");
         Cliente.setContentAreaFilled(false);
         Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        AgregarCliente.setText("Agregar");
-        AgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+        lista_cliente.setText("Listado y acciones");
+        lista_cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lista_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarClienteActionPerformed(evt);
+                lista_clienteActionPerformed(evt);
             }
         });
-        Cliente.add(AgregarCliente);
-
-        cliente_borrar.setText("Borrar");
-        cliente_borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cliente_borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cliente_borrarActionPerformed(evt);
-            }
-        });
-        Cliente.add(cliente_borrar);
-
-        jMenuItem4.setText("Actualizar");
-        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Cliente.add(jMenuItem4);
-
-        jMenuItem6.setText("Listado");
-        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Cliente.add(jMenuItem6);
+        Cliente.add(lista_cliente);
 
         jMenuBar1.add(Cliente);
 
         Alojamiento.setText("Alojamiento");
         Alojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        AgregarAlojamiento.setText("Agregar");
-        AgregarAlojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Alojamiento.add(AgregarAlojamiento);
-
-        jMenuItem7.setText("Borrar");
-        jMenuItem7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Alojamiento.add(jMenuItem7);
-
-        jMenuItem8.setText("Actualizar");
-        jMenuItem8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Alojamiento.add(jMenuItem8);
-
-        jMenuItem10.setText("Listado");
+        jMenuItem10.setText("Listado y acciones");
         jMenuItem10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Alojamiento.add(jMenuItem10);
 
         jMenuBar1.add(Alojamiento);
 
-        Traslado.setText("Traslado");
-        Traslado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        AgregarTraslado.setText("Agregar");
-        AgregarTraslado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Traslado.add(AgregarTraslado);
-
-        jMenuItem11.setText("Borrar");
-        jMenuItem11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Traslado.add(jMenuItem11);
-
-        jMenuItem12.setText("Actualizar");
-        jMenuItem12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Traslado.add(jMenuItem12);
-
-        jMenuItem13.setText("Listado");
-        jMenuItem13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Traslado.add(jMenuItem13);
-
-        jMenuBar1.add(Traslado);
-
         Paquete.setText("Paquete");
         Paquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        AgregarPaquete.setText("Agregar");
-        AgregarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Paquete.add(AgregarPaquete);
-
-        jMenuItem15.setText("Borrar");
-        jMenuItem15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Paquete.add(jMenuItem15);
-
-        jMenuItem16.setText("Actualizar");
-        jMenuItem16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Paquete.add(jMenuItem16);
-
-        jMenuItem17.setText("Listado");
+        jMenuItem17.setText("Listado y acciones");
         jMenuItem17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Paquete.add(jMenuItem17);
 
@@ -197,19 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         compra.setText("Compra");
         compra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        AgregarCompra.setText("Agregar");
-        AgregarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compra.add(AgregarCompra);
-
-        jMenuItem18.setText("Borrar");
-        jMenuItem18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compra.add(jMenuItem18);
-
-        jMenuItem19.setText("Actualizar");
-        jMenuItem19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compra.add(jMenuItem19);
-
-        jMenuItem20.setText("Listado");
+        jMenuItem20.setText("Listado y acciones");
         jMenuItem20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.add(jMenuItem20);
 
@@ -231,20 +140,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cliente_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliente_borrarActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_cliente_borrarActionPerformed
-
-    private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
+    private void lista_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_clienteActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        ClientesAgregar f = new ClientesAgregar();
-        f.setVisible(true);
-        escritorio.add(f).setSize(1000, 750);
-        escritorio.moveToFront(f);
-    }//GEN-LAST:event_AgregarClienteActionPerformed
+        ListaClientes lc = new ListaClientes();
+        lc.escritorio = escritorio;
+        lc.setVisible(true);
+         escritorio.add(lc).setSize(600, 400);
+        escritorio.moveToFront(lc);
+    }//GEN-LAST:event_lista_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,16 +187,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AgregarAlojamiento;
-    private javax.swing.JMenuItem AgregarCliente;
-    private javax.swing.JMenuItem AgregarCompra;
-    private javax.swing.JMenuItem AgregarPaquete;
-    private javax.swing.JMenuItem AgregarTraslado;
     private javax.swing.JMenu Alojamiento;
     private javax.swing.JMenu Cliente;
     private javax.swing.JMenu Paquete;
-    private javax.swing.JMenu Traslado;
-    private javax.swing.JMenuItem cliente_borrar;
     private javax.swing.JMenu compra;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -301,22 +199,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem lista_cliente;
     // End of variables declaration//GEN-END:variables
 }

@@ -73,6 +73,7 @@ public Cliente conseguirCliente(String documento) {
     return a;
     
 }
+
 public void actualizarCliente(Cliente cliente, String nombre, String documento, String celular){
    try {
     String sql = "UPDATE cliente SET nombre = ?, documento = ?, celular = ? WHERE id = ? "; 
