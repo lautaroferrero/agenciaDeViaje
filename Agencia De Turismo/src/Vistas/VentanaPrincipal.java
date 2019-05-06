@@ -151,6 +151,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_clienteActionPerformed
 
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
