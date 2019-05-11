@@ -38,17 +38,18 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
 
             for (int i = 0; i < listaAlojamiento.size(); i++) {
                 fila[0] = listaAlojamiento.get(i).getId();
+                fila[1] = listaAlojamiento.get(i).getDireccion();
                 fila[2] = listaAlojamiento.get(i).getCapacidad();
                 fila[3] = listaAlojamiento.get(i).getCostoPorNoche();
-                fila[4] = listaAlojamiento.get(i).isAdmiteFumadores();
-                fila[1] = listaAlojamiento.get(i).getDireccion();
+                fila[4] = listaAlojamiento.get(i).getAdmiteFumadores();
+                fila[5] = listaAlojamiento.get(i).getTipoDeAlojamiento();
                 JButton btnBorrar = new JButton();
                 btnBorrar.setText("Borrar");
-                fila[5] = btnBorrar;
+                fila[6] = btnBorrar;
                
                 JButton btnActualizar = new JButton();
                 btnActualizar.setText("Actualizar");
-                fila[6] = btnActualizar;
+                fila[7] = btnActualizar;
                
                 
                 modelo.addRow(fila);
@@ -80,15 +81,20 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
 
         tb_alojamiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DIRECCION", "CAPACIDAD", "COSTE_POR_NOCHE", "FUMADORES", "", ""
+                "ID", "DIRECCION", "CAPACIDAD", "COSTE_POR_NOCHE", "FUMADORES", "TIPO_DE_ALOJAMIENTO", "", ""
             }
         ));
+        tb_alojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_alojamientoMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tb_alojamiento);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,8 +129,53 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         lc.setVisible(true);
          escritorio.add(lc).setSize(600, 400);
         escritorio.moveToFront(lc);
+        lc.modo = 1;
                                        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tb_alojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_alojamientoMouseClicked
+          int column = tb_alojamiento.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/tb_alojamiento.getRowHeight();
+        
+       /* if(column == 6) {
+            AvisoBorrarA avisoBorrar = new AvisoBorrarA();
+        escritorio.removeAll();
+        escritorio.repaint();
+        avisoBorrar.setVisible(true);
+    
+        avisoBorrar.id = (int)tb_alojamiento.getValueAt(row, 0);
+       
+        escritorio.add(avisoBorrar).setSize(400, 400);
+        escritorio.moveToFront(avisoBorrar);} */
+        
+        
+        if(column == 7) {
+        int id = (int)tb_alojamiento.getValueAt(row, 0);
+        String direccion = (String)tb_alojamiento.getValueAt(row, 1);
+        int capacidad = (int)tb_alojamiento.getValueAt(row, 2);
+        int costopornoches = (int)tb_alojamiento.getValueAt(row, 3);
+        int fumadores = (int)tb_alojamiento.getValueAt(row, 4);
+        String tipoDeTransporte = (String)tb_alojamiento.getValueAt(row, 5);
+        
+        AlojamientoAgregar frmAgregar = new AlojamientoAgregar();
+        escritorio.removeAll();
+       
+        
+        frmAgregar.setVisible(true);
+        frmAgregar.modo = 2;
+        
+        frmAgregar.id = (int)tb_alojamiento.getValueAt(row, 0);
+         frmAgregar.direccion = (String)tb_alojamiento.getValueAt(row, 1);
+         frmAgregar.capacidad = (int)tb_alojamiento.getValueAt(row, 2);
+        frmAgregar.costepornoche = (int)tb_alojamiento.getValueAt(row, 3);
+        frmAgregar.admitefumadores = (int)tb_alojamiento.getValueAt(row, 4);
+        frmAgregar.tipo = (String) tb_alojamiento.getValueAt(row, 5);
+        escritorio.add(frmAgregar);
+                frmAgregar.setSize(400, 400);
+        escritorio.moveToFront(frmAgregar);
+        escritorio.repaint();
+        }
+    }//GEN-LAST:event_tb_alojamientoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
