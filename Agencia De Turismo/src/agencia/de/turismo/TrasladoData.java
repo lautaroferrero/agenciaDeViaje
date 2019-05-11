@@ -28,11 +28,12 @@ public class TrasladoData {
     }
  public void agregarTraslado(Traslado traslado){
         try {
-            String sql = "INSERT INTO traslado (tipo_de_transporte, cantidad_maxima_de_pasajeros, costo_por_kilometro) VALUES (?, ?, ?)"; 
+            String sql = "INSERT INTO traslado (patente, tipo_de_transporte, cantidad_maxima_de_pasajeros, costo_por_kilometro) VALUES (?, ?, ?, ?)"; 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, traslado.getTipoDeTransporte());
-            statement.setInt(2, traslado.getCantidadMaximaDePasajeros());
-            statement.setInt(3, traslado.getCostoPorKilometro());
+            statement.setString(1, traslado.getPatente());
+            statement.setString(2, traslado.getTipoDeTransporte());
+            statement.setInt(3, traslado.getCantidadMaximaDePasajeros());
+            statement.setInt(4, traslado.getCostoPorKilometro());
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
                     if (rs.next()) {
@@ -58,14 +59,15 @@ public void borrarTraslado(Traslado traslado) {
     
 
 } 
-public void actualizarTraslado(Traslado traslado, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro){
+public void actualizarTraslado(Traslado traslado, String patente, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro){
    try {
-    String sql = "UPDATE traslado SET tipo_de_transporte = ?, cantidad_maxima_de_pasajeros = ?, costo_por_kilometro = ? WHERE id = ? "; 
+    String sql = "UPDATE traslado SET tipo_de_transporte = ?, String patente = ?, cantidad_maxima_de_pasajeros = ?, costo_por_kilometro = ? WHERE id = ? "; 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, tipoDeTransporte);
-            statement.setInt(2, cantidadMaximaDePasajeros);
-            statement.setInt(3, costoPorKilometro);
-            statement.setInt(4, traslado.getId());
+            statement.setString(2, patente);
+            statement.setInt(3, cantidadMaximaDePasajeros);
+            statement.setInt(4, costoPorKilometro);
+            statement.setInt(5, traslado.getId());
             statement.executeUpdate();
             
            
@@ -87,6 +89,7 @@ public List<Traslado> listadoTraslado() {
                 a.setCantidadMaximaDePasajeros(rs.getInt("cantidad_maxima_de_pasajeros"));
                 a.setTipoDeTransporte(rs.getString("tipo_de_transporte"));
                 a.setCostoPorKilometro(rs.getInt("costo_por_kilometro"));
+                a.setPatente(rs.getString("patente"));
                 b.add(a);
             }
          statement.close();

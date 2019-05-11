@@ -8,6 +8,8 @@ package Vistas;
 import agencia.de.turismo.Cliente;
 import agencia.de.turismo.ClienteData;
 import agencia.de.turismo.Conexion;
+import agencia.de.turismo.Traslado;
+import agencia.de.turismo.TrasladoData;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JButton;
@@ -18,38 +20,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Familia
  */
-public class ListaClientes extends javax.swing.JInternalFrame {
+public class ListaTraslados extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
      public JDesktopPane escritorio;
     /**
      * Creates new form ListaClientes
      */
-    public ListaClientes() {
+    public ListaTraslados() {
         initComponents();
          
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
-            ClienteData cd = new ClienteData(con);
-            List<Cliente> listaCliente = cd.listadoClientes();
-             modelo = (DefaultTableModel) tb_cliente.getModel();
-            tb_cliente.setDefaultRenderer(Object.class, new Render());
+            TrasladoData cd = new TrasladoData(con);
+            List<Traslado> listaTraslado = cd.listadoTraslado();
+             modelo = (DefaultTableModel) tb_traslado.getModel();
+            tb_traslado.setDefaultRenderer(Object.class, new Render());
 
             
             modelo.setRowCount(0);
             Object[] fila = new Object[modelo.getColumnCount()];
 
-            for (int i = 0; i < listaCliente.size(); i++) {
-                fila[0] = listaCliente.get(i).getId();
-                fila[1] = listaCliente.get(i).getNombre();
-                fila[2] = listaCliente.get(i).getDocumento();
-                fila[3] = listaCliente.get(i).getCelular();
+            for (int i = 0; i < listaTraslado.size(); i++) {
+                fila[0] = listaTraslado.get(i).getId();
+                fila[1] = listaTraslado.get(i).getPatente();
+                fila[2] = listaTraslado.get(i).getTipoDeTransporte();
+                fila[3] = listaTraslado.get(i).getCantidadMaximaDePasajeros();
+                fila[4] = listaTraslado.get(i).getCostoPorKilometro();
                 JButton btnBorrar = new JButton();
                 btnBorrar.setText("Borrar");
-                fila[4] = btnBorrar;
+                fila[5] = btnBorrar;
                
                 JButton btnActualizar = new JButton();
                 btnActualizar.setText("Actualizar");
-                fila[5] = btnActualizar;
+                fila[6] = btnActualizar;
                 
                 modelo.addRow(fila);
             }
@@ -70,26 +73,33 @@ public class ListaClientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_cliente = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_traslado = new javax.swing.JTable();
 
-        tb_cliente.setModel(new javax.swing.table.DefaultTableModel(
+        jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tb_traslado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Documento", "Celular", "", ""
+                "ID", "PATENTE", "TIPO DE VEHICULO", "CAPACIDAD", "COSTO POR Km", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -100,20 +110,12 @@ public class ListaClientes extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tb_cliente.setName(""); // NOI18N
-        tb_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tb_traslado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_clienteMouseClicked(evt);
+                tb_trasladoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tb_cliente);
-
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(tb_traslado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,75 +124,75 @@ public class ListaClientes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton1)
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tb_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseClicked
-        int column = tb_cliente.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY()/tb_cliente.getRowHeight();
+    private void tb_trasladoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_trasladoMouseClicked
+        int column = tb_traslado.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/tb_traslado.getRowHeight();
         
-        if(column == 4) {
-            AvisoBorrar avisoBorrar = new AvisoBorrar();
+        if(column == 5) {
+            AvisoBorrarT avisoBorrar = new AvisoBorrarT();
         escritorio.removeAll();
         escritorio.repaint();
         avisoBorrar.setVisible(true);
         
-        avisoBorrar.id = (int)tb_cliente.getValueAt(row, 0);
+        avisoBorrar.id = (int)tb_traslado.getValueAt(row, 0);
        
         escritorio.add(avisoBorrar).setSize(400, 400);
         escritorio.moveToFront(avisoBorrar);
         
         }
-        if(column == 5) {
-        int id = (int)tb_cliente.getValueAt(row, 0);
-        String nombre = (String)tb_cliente.getValueAt(row, 1);
-        int documento = (int)tb_cliente.getValueAt(row, 2);
-        int celular = (int)tb_cliente.getValueAt(row, 3);
+        if(column == 6) {
+        int id = (int)tb_traslado.getValueAt(row, 0);
+        String patente = (String)tb_traslado.getValueAt(row, 1);
+        String tipoDeVehiculo = (String)tb_traslado.getValueAt(row, 2);
+        int capacidad = (int)tb_traslado.getValueAt(row, 3);
+        int costoPorKm = (int)tb_traslado.getValueAt(row, 4);
         
-        ClientesAgregar frmAgregar = new ClientesAgregar(id, nombre, documento, celular);
+        TrasladosAgregar frmAgregar = new TrasladosAgregar(id, patente, tipoDeVehiculo, capacidad, costoPorKm);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
         frmAgregar.modo = 2;
-        frmAgregar.id = (int)tb_cliente.getValueAt(row, 0);
-        frmAgregar.nombre = (String)tb_cliente.getValueAt(row, 1);
-        frmAgregar.documento = (int)tb_cliente.getValueAt(row, 2);
-        frmAgregar.celular = (int)tb_cliente.getValueAt(row, 3);
+        frmAgregar.id = (int)tb_traslado.getValueAt(row, 0);
+        frmAgregar.patente = (String)tb_traslado.getValueAt(row, 1);
+        frmAgregar.tipo = (String)tb_traslado.getValueAt(row, 2);
+        frmAgregar.capacidad = (int)tb_traslado.getValueAt(row, 3);
+        frmAgregar.costo = (int)tb_traslado.getValueAt(row, 4);
         escritorio.add(frmAgregar).setSize(400, 400);
         escritorio.moveToFront(frmAgregar);
         }
         
-    }//GEN-LAST:event_tb_clienteMouseClicked
+    }//GEN-LAST:event_tb_trasladoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ClientesAgregar frmAgregar = new ClientesAgregar();
+        TrasladosAgregar frmAgregar = new TrasladosAgregar();
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
         frmAgregar.modo = 1;
         escritorio.add(frmAgregar).setSize(400, 400);
-        escritorio.moveToFront(frmAgregar);
+        escritorio.moveToFront(frmAgregar);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tb_cliente;
+    private javax.swing.JTable tb_traslado;
     // End of variables declaration//GEN-END:variables
 }
