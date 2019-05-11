@@ -27,7 +27,7 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
      */
     public ListaAlojamiento() {
         initComponents();
-         
+      
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
             AlojamientoData ad = new AlojamientoData(con);
@@ -146,7 +146,7 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
         int column = tb_alojamiento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/tb_alojamiento.getRowHeight();
         
-        if(column == 4) {
+        if(column == 6) {
             AvisoBorrar avisoBorrar = new AvisoBorrar();
         escritorio.removeAll();
         escritorio.repaint();
@@ -158,21 +158,22 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
         escritorio.moveToFront(avisoBorrar);
         
         }
-        if(column == 5) {
+        if(column == 7) {
         int id = (int)tb_alojamiento.getValueAt(row, 0);
-        String nombre = (String)tb_alojamiento.getValueAt(row, 1);
-        String documento = (String)tb_alojamiento.getValueAt(row, 2);
-        String celular = (String)tb_alojamiento.getValueAt(row, 3);
+        String direccion = (String)tb_alojamiento.getValueAt(row, 1);
+        String capacidad = (String)tb_alojamiento.getValueAt(row, 2);
+        String costepornoche = (String)tb_alojamiento.getValueAt(row, 3);
+        String admitefumadores = (String)tb_alojamiento.getValueAt(row, -4);
         
-        ClientesAgregar frmAgregar = new ClientesAgregar(id, nombre, documento, celular);
+        AlojamientoAgregar frmAgregar = new AlojamientoAgregar(id,direccion,capacidad,costepornoche,admitefumadores);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
         frmAgregar.modo = 2;
         frmAgregar.id = (int)tb_alojamiento.getValueAt(row, 0);
-        frmAgregar.nombre = (String)tb_alojamiento.getValueAt(row, 1);
-        frmAgregar.documento = (String)tb_alojamiento.getValueAt(row, 2);
-        frmAgregar.celular = (String)tb_alojamiento.getValueAt(row, 3);
+        frmAgregar.capacidad = (int) tb_alojamiento.getValueAt(row, 1);
+        frmAgregar.costepornoche = (int) tb_alojamiento.getValueAt(row, 2);
+        frmAgregar.admitefumadores = (boolean) tb_alojamiento.getValueAt(row, 3);
         escritorio.add(frmAgregar).setSize(400, 400);
         escritorio.moveToFront(frmAgregar);
         }
@@ -180,7 +181,7 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
     }                                       
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        ClientesAgregar frmAgregar = new ClientesAgregar();
+        AlojamientoAgregar frmAgregar = new AlojamientoAgregar();
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
@@ -222,18 +223,31 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
 
         tb_alojamiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DIRECCION", "CAPACIDAD", "COSTE_POR_NOCHE", "FUMADORES"
+                "ID", "DIRECCION", "CAPACIDAD", "COSTE_POR_NOCHE", "FUMADORES", "", ""
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tb_alojamiento);
 
         jButton2.setText("Agregar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,6 +271,10 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
