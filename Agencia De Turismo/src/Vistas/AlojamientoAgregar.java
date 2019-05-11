@@ -29,9 +29,36 @@ public int modo;
      */
     public AlojamientoAgregar() {
         initComponents();
+    
     }
-public AlojamientoAgregar(int modo, int id, int capacidad, int costepornoche, boolean admitefumadores, String direccion) {
+    
+    public AlojamientoAgregar(int modo, int id, int capacidad, int costepornoche, boolean admitefumadores, String direccion) {
 this.modo = modo;
+        this.capacidad = capacidad;
+        this.id = id;
+                this.costepornoche = costepornoche;
+                        this.admitefumadores = admitefumadores;
+                        this.direccion = direccion;
+                        
+       
+                        String convertirString;
+                        
+                        if(admitefumadores = true) { convertirString = "Si";
+}
+                        else { convertirString = "No";
+                        
+                        }
+                        
+                        tb_admitefumadores.setText(convertirString);
+
+               tb_capacidad.setText(Integer.toString(capacidad));
+                  tb_costo.setText(Integer.toString(costepornoche));
+                  tb_direccion.setText(direccion);
+    
+    
+}
+    public AlojamientoAgregar(int id, int capacidad, int costepornoche, boolean admitefumadores, String direccion) {
+
         this.capacidad = capacidad;
         this.id = id;
                 this.costepornoche = costepornoche;

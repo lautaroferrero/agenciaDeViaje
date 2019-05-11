@@ -40,8 +40,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Cliente = new javax.swing.JMenu();
         lista_cliente = new javax.swing.JMenuItem();
-        Alojamiento = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        entrar_alojamiento = new javax.swing.JMenu();
+        lista_alojamiento = new javax.swing.JMenuItem();
         Paquete = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         compra = new javax.swing.JMenu();
@@ -97,14 +97,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(Cliente);
 
-        Alojamiento.setText("Alojamiento");
-        Alojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrar_alojamiento.setText("Alojamiento");
+        entrar_alojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jMenuItem10.setText("Listado y acciones");
-        jMenuItem10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Alojamiento.add(jMenuItem10);
+        lista_alojamiento.setText("Listado y acciones");
+        lista_alojamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lista_alojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lista_alojamientoActionPerformed(evt);
+            }
+        });
+        entrar_alojamiento.add(lista_alojamiento);
 
-        jMenuBar1.add(Alojamiento);
+        jMenuBar1.add(entrar_alojamiento);
 
         Paquete.setText("Paquete");
         Paquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -151,6 +156,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_clienteActionPerformed
 
+    private void lista_alojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_alojamientoActionPerformed
+       escritorio.removeAll();
+        escritorio.repaint();
+        ListaAlojamiento lc = new ListaAlojamiento();
+       lc.escritorio = escritorio;
+        lc.setVisible(true);
+         escritorio.add(lc).setSize(600, 400);
+        escritorio.moveToFront(lc);
+    }//GEN-LAST:event_lista_alojamientoActionPerformed
+
     
     
     
@@ -192,10 +207,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Alojamiento;
     private javax.swing.JMenu Cliente;
     private javax.swing.JMenu Paquete;
     private javax.swing.JMenu compra;
+    private javax.swing.JMenu entrar_alojamiento;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenu jMenu3;
@@ -203,13 +218,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem lista_alojamiento;
     private javax.swing.JMenuItem lista_cliente;
     // End of variables declaration//GEN-END:variables
 }

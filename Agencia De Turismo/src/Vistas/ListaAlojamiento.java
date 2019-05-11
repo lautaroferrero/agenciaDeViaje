@@ -7,8 +7,7 @@ package Vistas;
 
 import agencia.de.turismo.Alojamiento;
 import agencia.de.turismo.AlojamientoData;
-import agencia.de.turismo.Cliente;
-import agencia.de.turismo.ClienteData;
+
 import agencia.de.turismo.Conexion;
 import java.util.List;
 import javax.swing.JButton;
@@ -26,7 +25,7 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
      * Creates new form ListaClientes
      */
     public ListaAlojamiento() {
-        initComponents();
+       // initComponents();
       
         try {
             Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
@@ -47,15 +46,15 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
                 fila[4] = listaAlojamiento.get(i).getDireccion();
                 JButton btnBorrar = new JButton();
                 btnBorrar.setText("Borrar");
-                fila[4] = btnBorrar;
+                fila[5] = btnBorrar;
                
                 JButton btnActualizar = new JButton();
                 btnActualizar.setText("Actualizar");
-                fila[5] = btnActualizar;
+                fila[6] = btnActualizar;
                 
                 modelo.addRow(fila);
             }
-        } catch(Exception ex) {
+        } catch(ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
        
@@ -70,83 +69,13 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+   
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_cliente = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-
-        tb_cliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Documento", "Celular", "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tb_cliente.setName(""); // NOI18N
-        tb_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_clienteMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tb_cliente);
-
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
-        pack();
-    }// </editor-fold>                        
-
-    private void tb_clienteMouseClicked(java.awt.event.MouseEvent evt) {                                        
+    private void tb_alojamientoMouseClicked(java.awt.event.MouseEvent evt) {                                        
         int column = tb_alojamiento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/tb_alojamiento.getRowHeight();
         
-        if(column == 6) {
+        if(column == 5) {
             AvisoBorrar avisoBorrar = new AvisoBorrar();
         escritorio.removeAll();
         escritorio.repaint();
@@ -158,14 +87,14 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
         escritorio.moveToFront(avisoBorrar);
         
         }
-        if(column == 7) {
+        if(column == 6) {
         int id = (int)tb_alojamiento.getValueAt(row, 0);
         String direccion = (String)tb_alojamiento.getValueAt(row, 1);
-        String capacidad = (String)tb_alojamiento.getValueAt(row, 2);
-        String costepornoche = (String)tb_alojamiento.getValueAt(row, 3);
-        String admitefumadores = (String)tb_alojamiento.getValueAt(row, -4);
+        int capacidad = (int)tb_alojamiento.getValueAt(row, 2);
+        int costepornoche = (int)tb_alojamiento.getValueAt(row, 3);
+        boolean admitefumadores = (boolean)tb_alojamiento.getValueAt(row, 4);
         
-        AlojamientoAgregar frmAgregar = new AlojamientoAgregar(id,direccion,capacidad,costepornoche,admitefumadores);
+        AlojamientoAgregar frmAgregar = new AlojamientoAgregar(id,capacidad,costepornoche,admitefumadores,direccion);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
@@ -231,15 +160,7 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
             new String [] {
                 "ID", "DIRECCION", "CAPACIDAD", "COSTE_POR_NOCHE", "FUMADORES", "", ""
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane3.setViewportView(tb_alojamiento);
 
         jButton2.setText("Agregar");
@@ -264,9 +185,9 @@ public class ListaAlojamiento extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
