@@ -42,6 +42,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lista_cliente = new javax.swing.JMenuItem();
         entrar_alojamiento = new javax.swing.JMenu();
         lista_alojamiento = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         Paquete = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         compra = new javax.swing.JMenu();
@@ -111,6 +113,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(entrar_alojamiento);
 
+        jMenu1.setText("Traslado");
+
+        jMenuItem3.setText("Listado y acciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
         Paquete.setText("Paquete");
         Paquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -166,6 +180,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_alojamientoActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaTraslados lc = new ListaTraslados();
+        lc.escritorio = escritorio;
+        lc.setVisible(true);
+         escritorio.add(lc);
+        escritorio.moveToFront(lc);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     
     
     
@@ -213,6 +238,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu entrar_alojamiento;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -222,6 +248,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem lista_alojamiento;
