@@ -159,8 +159,8 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         if(column == 5) {
         int id = (int)tb_cliente.getValueAt(row, 0);
         String nombre = (String)tb_cliente.getValueAt(row, 1);
-        String documento = (String)tb_cliente.getValueAt(row, 2);
-        String celular = (String)tb_cliente.getValueAt(row, 3);
+        int documento = (int)tb_cliente.getValueAt(row, 2);
+        int celular = (int)tb_cliente.getValueAt(row, 3);
         
         ClientesAgregar frmAgregar = new ClientesAgregar(id, nombre, documento, celular);
         escritorio.removeAll();
@@ -169,8 +169,8 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         frmAgregar.modo = 2;
         frmAgregar.id = (int)tb_cliente.getValueAt(row, 0);
         frmAgregar.nombre = (String)tb_cliente.getValueAt(row, 1);
-        frmAgregar.documento = (String)tb_cliente.getValueAt(row, 2);
-        frmAgregar.celular = (String)tb_cliente.getValueAt(row, 3);
+        frmAgregar.documento = (int)tb_cliente.getValueAt(row, 2);
+        frmAgregar.celular = (int)tb_cliente.getValueAt(row, 3);
         escritorio.add(frmAgregar).setSize(400, 400);
         escritorio.moveToFront(frmAgregar);
         }
