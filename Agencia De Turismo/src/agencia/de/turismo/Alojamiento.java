@@ -15,6 +15,16 @@ public class Alojamiento {
     private int capacidad;
     private int costoPorNoche;
      private boolean admiteFumadores;
+     private String tipo_de_alojamiento;
+
+    public String getTipo_de_alojamiento() {
+        return tipo_de_alojamiento;
+    }
+
+    public void setTipo_de_alojamiento(String tipo_de_alojamiento) {
+        this.tipo_de_alojamiento = tipo_de_alojamiento;
+    }
+     
      
         public Alojamiento(){
             this.id = -1;

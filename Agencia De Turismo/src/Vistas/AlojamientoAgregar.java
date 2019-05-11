@@ -12,6 +12,7 @@ import agencia.de.turismo.ClienteData;
 import agencia.de.turismo.Conexion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -24,6 +25,7 @@ public int modo;
                         public int costepornoche;
                                 public boolean admitefumadores;
     public String direccion;
+         public JDesktopPane escritorio;
     /**
      * Creates new form AlojamientoAgregar
      */
@@ -172,7 +174,18 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
             }
         });
 
+        tb_admitefumadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_admitefumadoresActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -246,6 +259,36 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
     private void tb_capacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_capacidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tb_capacidadActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            
+    
+      
+        Alojamiento a = new Alojamiento();
+        
+        Conexion conexion = null;
+        try {
+            conexion = new Conexion("jdbc:mysql://localhost/asdawawe", "root", "");
+           
+         
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClientesAgregar.class.getName()).log(Level.SEVERE, null, ex);
+          
+        }
+        AlojamientoData ad = new AlojamientoData(conexion);
+        
+        a.setAdmiteFumadores(tb_admitefumadores.getText() == "Si");
+        a.setCapacidad(Integer.parseInt(tb_capacidad.getText()));
+        a.setCostoPorNoche(Integer.parseInt(tb_costo.getText()));
+        a.setDireccion(tb_direccion.getText());
+        ad.agregarAlojamiento(a);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tb_admitefumadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_admitefumadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_admitefumadoresActionPerformed
 
 
 

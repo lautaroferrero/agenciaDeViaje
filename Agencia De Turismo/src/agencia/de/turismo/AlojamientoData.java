@@ -33,6 +33,7 @@ public class AlojamientoData {
             statement.setInt(2, alojamiento.getCapacidad());
             statement.setInt(3, alojamiento.getCostoPorNoche());
             statement.setBoolean(4, alojamiento.isAdmiteFumadores());
+            statement.setString(5, alojamiento.getTipo_de_alojamiento());
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
                     if (rs.next()) {
@@ -57,15 +58,16 @@ public void borrarAlojamiento(Alojamiento alojamiento) {
     }
     
 }
-public void actualizarAlojamiento(Alojamiento alojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores){
+public void actualizarAlojamiento(Alojamiento alojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores, String tipo_de_alojamiento){
    try {
-    String sql = "UPDATE alojamiento SET direccion = ?, capacidad = ?, costo_por_noche = ?, admite_fumadores ? WHERE id = ? "; 
+    String sql = "UPDATE alojamiento SET direccion = ?, capacidad = ?, costo_por_noche = ?, admite_fumadores ?,tipo_de_alojamiento = ? WHERE id = ? "; 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, direccion);
             statement.setInt(2, capacidad);
             statement.setInt(3, costoPorNoche);
             statement.setBoolean(4, admiteFumadores);
-            statement.setInt(5, alojamiento.getId());
+            statement.setString(5, tipo_de_alojamiento);
+            statement.setInt(6, alojamiento.getId());
             statement.executeUpdate();
             
            
@@ -88,6 +90,7 @@ public List<Alojamiento> listadoAlojamiento() {
                 a.setCapacidad(rs.getInt("capacidad"));
                 a.setCostoPorNoche(rs.getInt("costo_por_noche"));
                 a.setAdmiteFumadores(rs.getBoolean("admite_fumadores"));
+                a.setTipo_de_alojamiento(rs.getString("tipo_de_alojamiento));
                 b.add(a);
             }
          statement.close();

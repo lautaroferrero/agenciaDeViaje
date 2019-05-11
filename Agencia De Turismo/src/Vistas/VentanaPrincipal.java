@@ -158,12 +158,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void lista_alojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_alojamientoActionPerformed
        escritorio.removeAll();
-        escritorio.repaint();
-        ListaAlojamiento lc = new ListaAlojamiento();
+       escritorio.repaint();
+       ListaAlojamiento2 lc = new ListaAlojamiento2();
        lc.escritorio = escritorio;
-        lc.setVisible(true);
-         escritorio.add(lc).setSize(600, 400);
-        escritorio.moveToFront(lc);
+       lc.setVisible(true);
+       escritorio.add(lc).setSize(600, 400);
+       escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_alojamientoActionPerformed
 
     
