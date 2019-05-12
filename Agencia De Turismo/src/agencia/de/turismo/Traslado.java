@@ -11,27 +11,38 @@ package agencia.de.turismo;
  */
 public class Traslado {
      private int id = -1;
+     private String patente;
     private String tipoDeTransporte;
     private int cantidadMaximaDePasajeros;
     private int costoPorKilometro;
+    
     public Traslado() {
         this.id = -1;
     }
       public Traslado(int id) {
         this.id = id;
     }
-    public Traslado(int id, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro) {
+    public Traslado(int id, String patente, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro) {
     this.id = id;
     this.tipoDeTransporte = tipoDeTransporte;
         this.cantidadMaximaDePasajeros = cantidadMaximaDePasajeros;
         this.costoPorKilometro = costoPorKilometro;
+        this.patente = patente;
     }
 
     
-    public Traslado(String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro) {
+    public Traslado(String patente, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro) {
         this.tipoDeTransporte = tipoDeTransporte;
         this.cantidadMaximaDePasajeros = cantidadMaximaDePasajeros;
         this.costoPorKilometro = costoPorKilometro;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
     }
 
     
@@ -67,4 +78,9 @@ public class Traslado {
         this.costoPorKilometro = costoPorKilometro;
     }
     
+     @Override
+    public String toString(){
+        return patente + " " + tipoDeTransporte + " " + cantidadMaximaDePasajeros;
+    }
+
 }

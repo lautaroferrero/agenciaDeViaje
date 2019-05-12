@@ -219,7 +219,7 @@ if(modo == 1) {
             tipo = t_tipo.getText();
             costo = (int) t_costoXKm.getValue();
             capacidad = (int) t_capacidad.getValue();
-            cd.actualizarTraslado(c, patente, tipo, costo, capacidad);
+            cd.actualizarTraslado(c, patente, tipo, capacidad, costo);
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

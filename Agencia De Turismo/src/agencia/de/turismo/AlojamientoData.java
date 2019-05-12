@@ -84,6 +84,7 @@ public List<Alojamiento> listadoAlojamiento() {
          while(rs.next()) {
                 a = new Alojamiento(); 
                 a.setId(rs.getInt("id"));
+                a.setTipoDeAlojamiento(rs.getString("tipo_de_alojamiento"));
                 a.setDireccion(rs.getString("direccion"));
                 a.setCapacidad(rs.getInt("capacidad"));
                 a.setCostoPorNoche(rs.getInt("costo_por_noche"));

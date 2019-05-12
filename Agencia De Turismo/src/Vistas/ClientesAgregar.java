@@ -20,8 +20,8 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
     //1 agregar, 2 actualizar
     public int id;
     public String nombre;
-    public int documento;
-    public int celular;
+    public String documento;
+    public String celular;
     /**
      * Creates new form FormularioCliente
      */
@@ -31,7 +31,7 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
         
     }
     
-    public ClientesAgregar(int id, String nombre, int documento, int celular) {
+    public ClientesAgregar(int id, String nombre, String documento, String celular) {
         initComponents();
         this.id = id;
         this.nombre = nombre;
@@ -39,8 +39,8 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
         this.celular = celular;
         
                 t_nombre.setText(nombre);
-                b_documento.setValue(documento);
-                b_celular.setValue(celular);
+                t_documento2.setText(documento);
+                t_celular2.setText(celular);
         
     }
 
@@ -62,8 +62,8 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         t_nombre = new javax.swing.JTextField();
-        b_documento = new javax.swing.JSpinner();
-        b_celular = new javax.swing.JSpinner();
+        t_celular2 = new javax.swing.JTextField();
+        t_documento2 = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(38, 268));
         setPreferredSize(new java.awt.Dimension(241, 280));
@@ -102,19 +102,19 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(t_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(b_celular, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(b_documento))))
-                .addGap(27, 27, 27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(t_celular2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(t_documento2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,13 +128,13 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_documento2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(b_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(t_celular2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(110, 110, 110))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,8 +165,8 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
           
         }
             ClienteData cd = new ClienteData(conexion);         
-            c.setCelular((int) b_celular.getValue());
-            c.setDocumento((int) b_documento.getValue());
+            c.setCelular(t_celular2.getText());
+            c.setDocumento(t_documento2.getText());
             c.setNombre(t_nombre.getText());
             cd.agregarCliente(c); 
             this.dispose();
@@ -186,8 +186,8 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
             ClienteData cd = new ClienteData(conexion);
             c.setId(id);
             nombre = t_nombre.getText();
-            documento = (int) b_documento.getValue();
-            celular = (int) b_celular.getValue();
+            documento = t_documento2.getText();
+            celular = t_celular2.getText();
             cd.actualizarCliente(c, nombre, documento, celular);
             this.dispose();
         }
@@ -195,15 +195,15 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner b_celular;
-    private javax.swing.JSpinner b_documento;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField t_celular;
+    private javax.swing.JTextField t_celular2;
     private javax.swing.JTextField t_documento;
+    private javax.swing.JTextField t_documento2;
     private javax.swing.JTextField t_nombre;
     // End of variables declaration//GEN-END:variables
 }

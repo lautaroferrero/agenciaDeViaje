@@ -61,7 +61,7 @@ public void borrarTraslado(Traslado traslado) {
 } 
 public void actualizarTraslado(Traslado traslado, String patente, String tipoDeTransporte, int cantidadMaximaDePasajeros, int costoPorKilometro){
    try {
-    String sql = "UPDATE traslado SET tipo_de_transporte = ?, String patente = ?, cantidad_maxima_de_pasajeros = ?, costo_por_kilometro = ? WHERE id = ? "; 
+    String sql = "UPDATE traslado SET tipo_de_transporte = ?, patente = ?, cantidad_maxima_de_pasajeros = ?, costo_por_kilometro = ? WHERE id = ? "; 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, tipoDeTransporte);
             statement.setString(2, patente);

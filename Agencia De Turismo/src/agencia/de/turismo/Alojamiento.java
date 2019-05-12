@@ -15,6 +15,7 @@ public class Alojamiento {
     private int capacidad;
     private int costoPorNoche;
      private boolean admiteFumadores;
+     private String tipoDeAlojamiento;
      
         public Alojamiento(){
             this.id = -1;
@@ -22,18 +23,20 @@ public class Alojamiento {
         public Alojamiento(int id){
             this.id = id;
         }
-       public Alojamiento(int id, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
+       public Alojamiento(int id, String tipoDeAlojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
         this.id = id;
         this.direccion = direccion;
         this.capacidad = capacidad;
         this.costoPorNoche = costoPorNoche;
         this.admiteFumadores = admiteFumadores;
+        this.tipoDeAlojamiento = tipoDeAlojamiento;
     }
-    public Alojamiento(String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
+    public Alojamiento(String tipoDeAlojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
         this.direccion = direccion;
         this.capacidad = capacidad;
         this.costoPorNoche = costoPorNoche;
         this.admiteFumadores = admiteFumadores;
+        this.tipoDeAlojamiento = tipoDeAlojamiento;
     }
      
 
@@ -76,5 +79,15 @@ public class Alojamiento {
     public void setAdmiteFumadores(boolean admiteFumadores) {
         this.admiteFumadores = admiteFumadores;
     }
-     
+
+    public String getTipoDeAlojamiento() {
+        return tipoDeAlojamiento;
+    }
+
+    public void setTipoDeAlojamiento(String tipoDeAlojamiento) {
+        this.tipoDeAlojamiento = tipoDeAlojamiento;
+    }
+     public String toString(){
+        return tipoDeAlojamiento + " " + direccion + " " + capacidad;
+    }
 }
