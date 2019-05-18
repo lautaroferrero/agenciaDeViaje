@@ -26,7 +26,7 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
     public ListaAlojamiento2() {
         initComponents();
         try {
-            Conexion con = new Conexion("jdbc:mysql://localhost/asdawawe", "root", ""); 
+            Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
             AlojamientoData ad = new AlojamientoData(con);
             List<Alojamiento> listaAlojamiento = ad.listadoAlojamiento();
              modelo = (DefaultTableModel)tb_alojamiento.getModel();
@@ -41,8 +41,8 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
                 fila[1] = listaAlojamiento.get(i).getDireccion();
                 fila[2] = listaAlojamiento.get(i).getCapacidad();
                 fila[3] = listaAlojamiento.get(i).getCostoPorNoche();
-                fila[4] = listaAlojamiento.get(i).getAdmiteFumadores();
-                fila[5] = listaAlojamiento.get(i).getTipoDeAlojamiento();
+                fila[4] = listaAlojamiento.get(i).isAdmiteFumadores();
+                fila[5] = listaAlojamiento.get(i).getTipo_de_alojamiento();
                 JButton btnBorrar = new JButton();
                 btnBorrar.setText("Borrar");
                 fila[6] = btnBorrar;
@@ -137,16 +137,16 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
           int column = tb_alojamiento.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/tb_alojamiento.getRowHeight();
         
-       /* if(column == 6) {
+        if(column == 6) {
             AvisoBorrarA avisoBorrar = new AvisoBorrarA();
         escritorio.removeAll();
         escritorio.repaint();
         avisoBorrar.setVisible(true);
     
-        avisoBorrar.id = (int)tb_alojamiento.getValueAt(row, 0);
+        AvisoBorrarA.id = (int) tb_alojamiento.getValueAt(row, 0);
        
         escritorio.add(avisoBorrar).setSize(400, 400);
-        escritorio.moveToFront(avisoBorrar);} */
+        escritorio.moveToFront(avisoBorrar);} 
         
         
         if(column == 7) {

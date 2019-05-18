@@ -75,7 +75,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
             Alojamiento a = new Alojamiento();
             Conexion conexion = null;
         try {
-            conexion = new Conexion("jdbc:mysql://localhost/asdawawe", "root", "");
+            conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
            
          
         } catch (ClassNotFoundException ex) {
@@ -100,7 +100,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
             
             a.setAdmiteFumadores(b);
           
-            a.setTipoDeAlojamiento(String.valueOf(tb_tipo.getSelectedItem()));
+            a.setTipo_de_alojamiento(String.valueOf(tb_tipo.getSelectedItem()));
             ad.agregarAlojamiento(a); 
             this.dispose();
         } 
@@ -109,7 +109,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
             Conexion conexion = null;
             Alojamiento a = new Alojamiento();
         try {
-            conexion = new Conexion("jdbc:mysql://localhost/asdawawe", "root", "");
+            conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
            
          
         } catch (ClassNotFoundException ex) {
@@ -330,7 +330,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
         
         Conexion conexion = null;
         try {
-            conexion = new Conexion("jdbc:mysql://localhost/asdawawe", "root", "");
+            conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
            
          
         } catch (ClassNotFoundException ex) {
@@ -348,7 +348,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
         a.setCapacidad(Integer.parseInt(tb_capacidad.getText()));
         a.setCostoPorNoche(Integer.parseInt(tb_costo.getText()));
         a.setDireccion(tb_direccion.getText());
-        a.setTipoDeAlojamiento(String.valueOf(tb_tipo.getSelectedItem()));
+        a.setTipo_de_alojamiento(String.valueOf(tb_tipo.getSelectedItem()));
         ad.agregarAlojamiento(a);
         this.dispose();
         
@@ -357,7 +357,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
       if ( modo == 2) {
        Conexion conexion = null;
         try {
-            conexion = new Conexion("jdbc:mysql://localhost/asdawawe", "root", "");
+            conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
            
          
         } catch (ClassNotFoundException ex) {

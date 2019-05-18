@@ -86,5 +86,9 @@ public class Alojamiento {
     public void setAdmiteFumadores(boolean admiteFumadores) {
         this.admiteFumadores = admiteFumadores;
     }
+
+    public void setAdmiteFumadores(int b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      
 }

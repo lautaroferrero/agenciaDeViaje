@@ -58,14 +58,14 @@ public void borrarAlojamiento(Alojamiento alojamiento) {
     }
     
 }
-public void actualizarAlojamiento(Alojamiento alojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores, String tipo_de_alojamiento){
+public void actualizarAlojamiento(Alojamiento alojamiento, String direccion, int capacidad, int costoPorNoche, int admiteFumadores, String tipo_de_alojamiento){
    try {
     String sql = "UPDATE alojamiento SET direccion = ?, capacidad = ?, costo_por_noche = ?, admite_fumadores ?,tipo_de_alojamiento = ? WHERE id = ? "; 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, direccion);
             statement.setInt(2, capacidad);
             statement.setInt(3, costoPorNoche);
-            statement.setBoolean(4, admiteFumadores);
+            statement.setInt(4, admiteFumadores);
             statement.setString(5, tipo_de_alojamiento);
             statement.setInt(6, alojamiento.getId());
             statement.executeUpdate();
@@ -90,7 +90,7 @@ public List<Alojamiento> listadoAlojamiento() {
                 a.setCapacidad(rs.getInt("capacidad"));
                 a.setCostoPorNoche(rs.getInt("costo_por_noche"));
                 a.setAdmiteFumadores(rs.getBoolean("admite_fumadores"));
-                a.setTipo_de_alojamiento(rs.getString("tipo_de_alojamiento));
+                a.setTipo_de_alojamiento(rs.getString("tipo_de_alojamiento"));
                 b.add(a);
             }
          statement.close();
