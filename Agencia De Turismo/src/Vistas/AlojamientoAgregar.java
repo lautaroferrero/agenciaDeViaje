@@ -39,6 +39,7 @@ public int modo;
     
     
     public AlojamientoAgregar(int modo, int id, int capacidad, int costepornoche, boolean admitefumadores, String direccion, String tipo) {
+        initComponents();
         this.modo = modo;
         this.capacidad = capacidad;
         this.id = id;
@@ -46,8 +47,13 @@ public int modo;
         this.admitefumadores = admitefumadores;
         this.direccion = direccion;
         this.tipo = tipo;
-        
-            tb_fumadores.setSelectedItem(admitefumadores);
+        String fumadores = null;
+        if(admitefumadores) {
+            fumadores = "Si";
+        } else {
+             fumadores = "No";
+        }
+            tb_fumadores.setSelectedItem(fumadores);
             tb_capacidad.setText(String.valueOf(capacidad));
             tb_costo.setText(String.valueOf(costepornoche));
             tb_direccion.setText(direccion);

@@ -169,7 +169,8 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         AvisoBorrarA.id = (int) tb_alojamiento.getValueAt(row, 0);
        
         escritorio.add(avisoBorrar).setSize(400, 400);
-        escritorio.moveToFront(avisoBorrar);} 
+        escritorio.moveToFront(avisoBorrar);
+        } 
         
         
         if(column == 7) {
@@ -181,17 +182,19 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         String tipo = (String)tb_alojamiento.getValueAt(row, 5);
         
         AlojamientoAgregar frmAgregar = new AlojamientoAgregar(2, id, capacidad, costopornoches, fumadores, direccion, tipo);
-        escritorio.removeAll();
-       
         
-        frmAgregar.setVisible(true);
-        
-        
-        
-        escritorio.add(frmAgregar);
-        frmAgregar.setSize(400, 400);
-        escritorio.moveToFront(frmAgregar);
+        frmAgregar.id = (int)tb_alojamiento.getValueAt(row, 0);
+        frmAgregar.direccion = (String)tb_alojamiento.getValueAt(row, 1);
+        frmAgregar.capacidad = (int)tb_alojamiento.getValueAt(row, 2);
+        frmAgregar.costepornoche = (int)tb_alojamiento.getValueAt(row, 3);
+        frmAgregar.admitefumadores = (boolean)SiONoABool((String)tb_alojamiento.getValueAt(row, 4));
+        frmAgregar.tipo = (String)tb_alojamiento.getValueAt(row, 5);
+        escritorio.removeAll(); 
         escritorio.repaint();
+        frmAgregar.setVisible(true);
+        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.moveToFront(frmAgregar);
+        
         }
     }//GEN-LAST:event_tb_alojamientoMouseClicked
 
