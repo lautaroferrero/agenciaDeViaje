@@ -15,7 +15,16 @@ public class Alojamiento {
     private int capacidad;
     private int costoPorNoche;
      private boolean admiteFumadores;
-     private String tipoDeAlojamiento;
+     private String tipo_de_alojamiento;
+
+    public String getTipo_de_alojamiento() {
+        return tipo_de_alojamiento;
+    }
+
+    public void setTipo_de_alojamiento(String tipo_de_alojamiento) {
+        this.tipo_de_alojamiento = tipo_de_alojamiento;
+    }
+     
      
         public Alojamiento(){
             this.id = -1;
@@ -23,20 +32,20 @@ public class Alojamiento {
         public Alojamiento(int id){
             this.id = id;
         }
-       public Alojamiento(int id, String tipoDeAlojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
+       public Alojamiento(int id, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores, String tipo_de_alojamiento) {
         this.id = id;
         this.direccion = direccion;
         this.capacidad = capacidad;
         this.costoPorNoche = costoPorNoche;
         this.admiteFumadores = admiteFumadores;
-        this.tipoDeAlojamiento = tipoDeAlojamiento;
+        this.tipo_de_alojamiento = tipo_de_alojamiento;
     }
-    public Alojamiento(String tipoDeAlojamiento, String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores) {
+    public Alojamiento(String direccion, int capacidad, int costoPorNoche, boolean admiteFumadores, String tipo_de_alojamiento) {
         this.direccion = direccion;
         this.capacidad = capacidad;
         this.costoPorNoche = costoPorNoche;
         this.admiteFumadores = admiteFumadores;
-        this.tipoDeAlojamiento = tipoDeAlojamiento;
+        this.tipo_de_alojamiento = tipo_de_alojamiento;
     }
      
 
@@ -80,14 +89,38 @@ public class Alojamiento {
         this.admiteFumadores = admiteFumadores;
     }
 
-    public String getTipoDeAlojamiento() {
-        return tipoDeAlojamiento;
+    public void setAdmiteFumadores(int b) {
+        if(b == 1) {
+            this.admiteFumadores = true;
+        } else {
+            this.admiteFumadores = false;
+        }
     }
-
     public void setTipoDeAlojamiento(String tipoDeAlojamiento) {
-        this.tipoDeAlojamiento = tipoDeAlojamiento;
-    }
+        this.tipo_de_alojamiento = tipoDeAlojamiento;
+  }
      public String toString(){
-        return tipoDeAlojamiento + " " + direccion + " " + capacidad;
+        return tipo_de_alojamiento + " " + direccion + " " + capacidad;
     }
+     public int boolAInt(boolean a) {
+     if(a){
+     return 1;
+     } else {
+         return 0;
+     }
+     }
+     public String boolASiNo(boolean a) {
+         if(a) {
+             return "Si";
+         } else {
+             return "No";
+         }
+     }
+     public boolean SiONoABool(String a) {
+         if(a == "Si") {
+             return true;
+         } else {
+             return false;
+         }
+     }
 }

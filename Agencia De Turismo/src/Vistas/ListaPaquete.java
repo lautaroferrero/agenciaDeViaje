@@ -142,7 +142,7 @@ public class ListaPaquete extends javax.swing.JInternalFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         // TODO add your handling code here:
-      PaquetesAgregar frmAgregar = new PaquetesAgregar();
+      PaquetesAgregar frmAgregar = new PaquetesAgregar(-1, 1);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
@@ -168,12 +168,12 @@ public class ListaPaquete extends javax.swing.JInternalFrame {
         
         } 
         if(column == 5) {
-          PaquetesAgregar frmAgregar = new PaquetesAgregar();
+          PaquetesAgregar frmAgregar = new PaquetesAgregar((int)tb_paquetes.getValueAt(row, 0), 2);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
-      frmAgregar.modo = 2;
-      frmAgregar.id = (int)tb_paquetes.getValueAt(row, 0);
+      
+      
         escritorio.add(frmAgregar).setSize(400, 400);
         escritorio.moveToFront(frmAgregar);   
         }

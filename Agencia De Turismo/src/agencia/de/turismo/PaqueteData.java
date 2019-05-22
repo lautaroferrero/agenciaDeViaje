@@ -70,6 +70,33 @@ public void actualizarPaquete(Paquete paquete, int idTraslado, int idAlojamiento
        System.out.println(ex.getMessage());
    }              
 }
+
+    public Paquete consultarPaquete(int idPaquete) {
+        Paquete b = new Paquete();
+        Alojamiento a = new Alojamiento();
+        Traslado t = new Traslado();
+           try {
+               String sql = "SELECT id_alojamiento, id_traslado FROM paquete WHERE id = ? " ; 
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setInt(1, idPaquete);
+                     ResultSet rs = statement.executeQuery();
+                    
+                while(rs.next()) {
+                   b.setId(idPaquete);
+                   a.setId(rs.getInt(1));
+                   b.setAlojamiento(a);
+                   t.setId(rs.getInt(2));
+                   b.setTraslado(t);
+                }
+                statement.close();
+           } catch(Exception ex) {
+               System.out.println(ex.getMessage());
+
+           }
+          return b;
+    }
+    
+
 public List<Paquete> listadoPaquete() {
     
     List<Paquete> b = new ArrayList<Paquete>();
@@ -97,6 +124,30 @@ public List<Paquete> listadoPaquete() {
                 a.setAlojamiento(alojamiento);
                 b.add(a);
             }
+         statement.close();
+    } catch(Exception ex) {
+        System.out.println(ex.getMessage());
+        
+    }
+   return b;
+} 
+
+public List<Traslado> listadoTrasladoPorAlojamiento(int idAlojamiento) {
+    
+    List<Traslado> b = new ArrayList<Traslado>();
+    try {
+        String sql = "SELECT p.id, p.id_traslado, t.patente, t.tipo_de_transporte FROM paquete p, traslado t, alojamiento a WHERE p.id_traslado = t.id AND p.id_alojamiento = a.id AND p.id_alojamiento=?"; 
+         PreparedStatement statement = connection.prepareStatement(sql);
+         statement.setInt(1, idAlojamiento);
+         ResultSet rs = statement.executeQuery(); 
+         Traslado traslado;
+         while(rs.next()) {
+            traslado = new Traslado();
+            traslado.setId(rs.getInt("id_traslado"));
+            traslado.setPatente(rs.getString("patente"));
+            traslado.setTipoDeTransporte(rs.getString("tipo_de_transporte"));
+            b.add(traslado);
+        }
          statement.close();
     } catch(Exception ex) {
         System.out.println(ex.getMessage());

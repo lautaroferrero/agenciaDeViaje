@@ -10,7 +10,7 @@ package agencia.de.turismo;
  * @author Familia
  */
 public class Paquete {
-     private int id = -1;
+    private int id = -1;
     private Traslado traslado;
     private Alojamiento alojamiento;
     
