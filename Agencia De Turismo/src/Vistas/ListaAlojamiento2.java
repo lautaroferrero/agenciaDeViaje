@@ -185,11 +185,11 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
        
         
         frmAgregar.setVisible(true);
-        frmAgregar.modo = 2;
+        
         
         
         escritorio.add(frmAgregar);
-                frmAgregar.setSize(400, 400);
+        frmAgregar.setSize(400, 400);
         escritorio.moveToFront(frmAgregar);
         escritorio.repaint();
         }
