@@ -65,7 +65,10 @@ public Cliente(int id) {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    
+    @Override
+    public String toString(){
+        return nombre + " " + documento;
+    }
     
 }
 

@@ -5,17 +5,62 @@
  */
 package Vistas;
 
+import agencia.de.turismo.Alojamiento;
+import agencia.de.turismo.AlojamientoData;
+import agencia.de.turismo.Compra;
+import agencia.de.turismo.CompraData;
+import agencia.de.turismo.Conexion;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Familia
  */
 public class ListaCompra extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo;
+    public JDesktopPane escritorio;
     /**
      * Creates new form ListaCompra
      */
     public ListaCompra() {
         initComponents();
+        try {
+            Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
+            CompraData ad = new CompraData(con);
+            List<Compra> listaCompras = ad.listadoCompra();
+             modelo = (DefaultTableModel)tb_compra.getModel();
+            tb_compra.setDefaultRenderer(Object.class, new Render());
+
+            
+            modelo.setRowCount(0);
+            Object[] fila = new Object[modelo.getColumnCount()];
+
+            for (int i = 0; i < listaCompras .size(); i++) {
+                fila[0] = listaCompras.get(i).getId();
+                fila[1] = listaCompras.get(i).getCliente().getNombre();
+                fila[2] = listaCompras.get(i).getCliente().getDocumento();
+                fila[3] = listaCompras.get(i).getPaquete().getTraslado().getTipoDeTransporte();
+                fila[4] = listaCompras.get(i).getPaquete().getTraslado().getPatente();
+                fila[5] = listaCompras.get(i).getPaquete().getAlojamiento().getTipo_de_alojamiento();
+                fila[6] = listaCompras.get(i).getPaquete().getAlojamiento().getDireccion();
+                fila[7] = listaCompras.get(i).getCantidadDePasajeros();
+                JButton btnBorrar = new JButton();
+                btnBorrar.setText("Borrar");
+                fila[8] = btnBorrar;
+               
+                JButton btnActualizar = new JButton();
+                btnActualizar.setText("Actualizar");
+                fila[9] = btnActualizar;
+               
+                
+                modelo.addRow(fila);
+            }
+        } catch(ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -28,62 +73,116 @@ public class ListaCompra extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_compra = new javax.swing.JTable();
+        btn_Agregar = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_compra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre del cliente", "Documento del cliente", "Tipo del transporte", "Patente del transporte", "Tipo del alojamiento", "Direccion del alojamiento", "Cantidad de pasajeros", "Costo total"
+                "ID", "Nombre del cliente", "Documento del cliente", "Tipo del transporte", "Patente del transporte", "Tipo del alojamiento", "Direccion del alojamiento", "Cantidad de pasajeros", "", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
-            jTable1.getColumnModel().getColumn(8).setResizable(false);
+        tb_compra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_compraMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_compra);
+        if (tb_compra.getColumnModel().getColumnCount() > 0) {
+            tb_compra.getColumnModel().getColumn(0).setResizable(false);
+            tb_compra.getColumnModel().getColumn(1).setResizable(false);
+            tb_compra.getColumnModel().getColumn(2).setResizable(false);
+            tb_compra.getColumnModel().getColumn(3).setResizable(false);
+            tb_compra.getColumnModel().getColumn(4).setResizable(false);
+            tb_compra.getColumnModel().getColumn(5).setResizable(false);
+            tb_compra.getColumnModel().getColumn(6).setResizable(false);
+            tb_compra.getColumnModel().getColumn(7).setResizable(false);
+            tb_compra.getColumnModel().getColumn(8).setResizable(false);
+            tb_compra.getColumnModel().getColumn(9).setResizable(false);
         }
+
+        btn_Agregar.setText("Agregar");
+        btn_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_Agregar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btn_Agregar)
+                .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tb_compraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_compraMouseClicked
+        int column = tb_compra.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/tb_compra.getRowHeight();
+        
+        if(column == 8) {
+            AvisoBorrarCompra avisoBorrar = new AvisoBorrarCompra();
+            escritorio.removeAll();
+            escritorio.repaint();
+            avisoBorrar.setVisible(true);
+    
+            AvisoBorrarCompra.id = (int) tb_compra.getValueAt(row, 0);
+       
+            escritorio.add(avisoBorrar).setSize(400, 400);
+            escritorio.moveToFront(avisoBorrar);
+        }
+        if(column == 9) {
+            CompraAgregar frmAgregar = new CompraAgregar((int)tb_compra.getValueAt(row, 0), 2, (int)tb_compra.getValueAt(row, 7));
+        escritorio.removeAll();
+        escritorio.repaint();
+        frmAgregar.setVisible(true);
+        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.moveToFront(frmAgregar);
+        }
+    }//GEN-LAST:event_tb_compraMouseClicked
+
+    private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
+        CompraAgregar frmAgregar = new CompraAgregar(-1, 1, -1);
+        escritorio.removeAll();
+        escritorio.repaint();
+        frmAgregar.setVisible(true);
+        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.moveToFront(frmAgregar);
+    }//GEN-LAST:event_btn_AgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Agregar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tb_compra;
     // End of variables declaration//GEN-END:variables
 }

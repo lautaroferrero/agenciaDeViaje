@@ -152,7 +152,7 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         
         avisoBorrar.id = (int)tb_cliente.getValueAt(row, 0);
        
-        escritorio.add(avisoBorrar).setSize(400, 400);
+        escritorio.add(avisoBorrar).setSize(285, 125);
         escritorio.moveToFront(avisoBorrar);
         
         }
@@ -162,7 +162,7 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         String documento = (String)tb_cliente.getValueAt(row, 2);
         String celular = (String)tb_cliente.getValueAt(row, 3);
         
-        ClientesAgregar frmAgregar = new ClientesAgregar(id, nombre, documento, celular);
+        ClientesAgregar frmAgregar = new ClientesAgregar(id, 2, nombre, documento, celular);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
@@ -171,7 +171,7 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         frmAgregar.nombre = (String)tb_cliente.getValueAt(row, 1);
         frmAgregar.documento = (String)tb_cliente.getValueAt(row, 2);
         frmAgregar.celular = (String)tb_cliente.getValueAt(row, 3);
-        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.add(frmAgregar).setSize(300, 300);
         escritorio.moveToFront(frmAgregar);
         }
         
@@ -183,7 +183,7 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         escritorio.repaint();
         frmAgregar.setVisible(true);
         frmAgregar.modo = 1;
-        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.add(frmAgregar).setSize(300, 300);
         escritorio.moveToFront(frmAgregar);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -75,19 +75,32 @@ public List<Compra> listadoCompra() {
     
     List<Compra> b = new ArrayList<Compra>();
     try {
-        String sql = "SELECT * FROM compra"; 
+        String sql = "SELECT co.id, co.id_cliente, co.id_paquete, co.cantidad_pasajeros, cl.nombre, cl.documento, p.id_alojamiento, p.id_traslado, a.tipo_de_alojamiento, a.direccion, t.tipo_de_transporte, t.patente FROM compra co, cliente cl, paquete p, alojamiento a, traslado t WHERE co.id_cliente = cl.id AND co.id_paquete = p.id AND p.id_alojamiento = a.id AND p.id_traslado = t.id"; 
          PreparedStatement statement = connection.prepareStatement(sql);
               ResultSet rs = statement.executeQuery(); 
                Compra a;
          while(rs.next()) {
                 a = new Compra(); 
                 a.setId(rs.getInt("id"));
+                
                 Cliente cliente = new Cliente(rs.getInt("id_cliente"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setDocumento(rs.getString("documento"));
                 a.setCliente(cliente);
                 
                 Paquete paquete = new Paquete(rs.getInt("id_paquete"));
+                Alojamiento alojamiento = new Alojamiento(rs.getInt("id_alojamiento"));
+                alojamiento.setTipoDeAlojamiento(rs.getString("tipo_de_alojamiento"));
+                alojamiento.setDireccion(rs.getString("direccion"));
+                paquete.setAlojamiento(alojamiento);
+                Traslado traslado = new Traslado(rs.getInt("id_traslado"));
+                traslado.setTipoDeTransporte(rs.getString("tipo_de_transporte"));
+                traslado.setPatente(rs.getString("patente"));
+                paquete.setTraslado(traslado);
                 a.setPaquete(paquete);
+                
                 a.setCantidadDePasajeros(rs.getInt("cantidad_pasajeros"));
+                
                 b.add(a);
             }
          statement.close();
@@ -96,6 +109,34 @@ public List<Compra> listadoCompra() {
         
     }
    return b;
+}
+public Compra consultarCompra(int id) {
+    Compra a = null;
+    try {
+        String sql = "SELECT id, id_cliente, id_paquete, cantidad_pasajeros FROM compra WHERE id = ?"; 
+         PreparedStatement statement = connection.prepareStatement(sql);
+         statement.setInt(1, id);
+              ResultSet rs = statement.executeQuery(); 
+               
+         while(rs.next()) {
+                a = new Compra(); 
+                a.setId(rs.getInt("id"));
+                
+                Cliente cliente = new Cliente(rs.getInt("id_cliente"));
+                a.setCliente(cliente);
+                
+                Paquete paquete = new Paquete(rs.getInt("id_paquete"));
+                a.setPaquete(paquete);
+                
+                a.setCantidadDePasajeros(rs.getInt("cantidad_pasajeros"));
+                
+            }
+         statement.close();
+    } catch(Exception ex) {
+        System.out.println(ex.getMessage());
+        
+    }
+   return a;
 }
 }
 

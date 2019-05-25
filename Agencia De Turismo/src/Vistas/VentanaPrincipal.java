@@ -47,7 +47,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Paquete = new javax.swing.JMenu();
         lista_paquete = new javax.swing.JMenuItem();
         compra = new javax.swing.JMenu();
-        jMenuItem20 = new javax.swing.JMenuItem();
+        lista_compra = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -142,9 +142,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         compra.setText("Compra");
         compra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jMenuItem20.setText("Listado y acciones");
-        jMenuItem20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        compra.add(jMenuItem20);
+        lista_compra.setText("Listado y acciones");
+        lista_compra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lista_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lista_compraActionPerformed(evt);
+            }
+        });
+        compra.add(lista_compra);
 
         jMenuBar1.add(compra);
 
@@ -171,7 +176,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ListaClientes lc = new ListaClientes();
         lc.escritorio = escritorio;
         lc.setVisible(true);
-         escritorio.add(lc).setSize(600, 400);
+         escritorio.add(lc).setSize(600, 300);
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_clienteActionPerformed
 
@@ -181,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ListaAlojamiento2 lc = new ListaAlojamiento2();
         lc.escritorio = escritorio;
         lc.setVisible(true);
-         escritorio.add(lc).setSize(600, 400);
+         escritorio.add(lc).setSize(600, 300);
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_alojamientoActionPerformed
 
@@ -205,6 +210,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
          escritorio.add(lc).setSize(800, 400);
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_lista_paqueteActionPerformed
+
+    private void lista_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_compraActionPerformed
+        // TODO add your handling code here:
+           escritorio.removeAll();
+        escritorio.repaint();
+        ListaCompra lc = new ListaCompra();
+        lc.escritorio = escritorio;
+        lc.setVisible(true);
+         escritorio.add(lc).setSize(800, 400);
+        escritorio.moveToFront(lc);
+    }//GEN-LAST:event_lista_compraActionPerformed
 
     
     
@@ -261,12 +277,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem lista_alojamiento;
     private javax.swing.JMenuItem lista_cliente;
+    private javax.swing.JMenuItem lista_compra;
     private javax.swing.JMenuItem lista_paquete;
     // End of variables declaration//GEN-END:variables
 }

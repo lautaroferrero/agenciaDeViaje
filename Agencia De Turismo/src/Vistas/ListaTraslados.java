@@ -77,7 +77,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_traslado = new javax.swing.JTable();
 
-        jButton1.setText("AGREGAR");
+        jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -92,7 +92,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "PATENTE", "TIPO DE VEHICULO", "CAPACIDAD", "COSTO POR Km", "", ""
+                "ID", "Patente", "Tipo de vehiculo", "Capacidad", "Costo por Km", "", ""
             }
         ) {
             Class[] types = new Class [] {
@@ -126,7 +126,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 663, Short.MAX_VALUE))
+                        .addGap(0, 673, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -165,7 +165,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
         int capacidad = (int)tb_traslado.getValueAt(row, 3);
         int costoPorKm = (int)tb_traslado.getValueAt(row, 4);
         
-        TrasladosAgregar frmAgregar = new TrasladosAgregar(id, patente, tipoDeVehiculo, capacidad, costoPorKm);
+        TrasladosAgregar frmAgregar = new TrasladosAgregar(id, 2, patente, tipoDeVehiculo, capacidad, costoPorKm);
         escritorio.removeAll();
         escritorio.repaint();
         frmAgregar.setVisible(true);
@@ -175,7 +175,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
         frmAgregar.tipo = (String)tb_traslado.getValueAt(row, 2);
         frmAgregar.capacidad = (int)tb_traslado.getValueAt(row, 3);
         frmAgregar.costo = (int)tb_traslado.getValueAt(row, 4);
-        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.add(frmAgregar).setSize(250, 275);
         escritorio.moveToFront(frmAgregar);
         }
         
@@ -187,7 +187,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
         escritorio.repaint();
         frmAgregar.setVisible(true);
         frmAgregar.modo = 1;
-        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.add(frmAgregar).setSize(250, 275);
         escritorio.moveToFront(frmAgregar);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

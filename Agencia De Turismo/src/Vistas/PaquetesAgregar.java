@@ -26,6 +26,9 @@ public int id;
         initComponents();
         this.id = id;
         this.modo = modo;
+        if(modo == 2) {
+                btn_aceptar.setText("Actualizar");
+            }
         try {
         
             Conexion con = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", ""); 
@@ -97,7 +100,7 @@ public int id;
 
         jLabel2.setText("Alojamiento");
 
-        btn_aceptar.setText("Aceptar");
+        btn_aceptar.setText("Agregar");
         btn_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_aceptarActionPerformed(evt);

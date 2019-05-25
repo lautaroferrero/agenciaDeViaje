@@ -7,6 +7,8 @@ package Vistas;
 
 import agencia.de.turismo.Cliente;
 import agencia.de.turismo.ClienteData;
+import agencia.de.turismo.Compra;
+import agencia.de.turismo.CompraData;
 import agencia.de.turismo.Conexion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,12 +17,12 @@ import java.util.logging.Logger;
  *
  * @author Familia
  */
-public class AvisoBorrar extends javax.swing.JInternalFrame {
-        public int id;
+public class AvisoBorrarCompra extends javax.swing.JInternalFrame {
+    public static int id;
     /**
-     * Creates new form AvisoBorrar
+     * Creates new form AvisoBorrarCompra
      */
-    public AvisoBorrar() {
+    public AvisoBorrarCompra() {
         initComponents();
     }
 
@@ -33,11 +35,14 @@ public class AvisoBorrar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText("¿Desea borrar esta compra?");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.setToolTipText("");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -51,40 +56,42 @@ public class AvisoBorrar extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("¿Esta seguro que desea borrar a este cliente?");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 10, Short.MAX_VALUE)
                 .addComponent(btnAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addGap(36, 36, 36))
+                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAceptar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        
-        Cliente c = new Cliente();
+        Compra c = new Compra();
           Conexion conexion = null;
         try {
             conexion = new Conexion("jdbc:mysql://localhost/agenciadeturismo", "root", "");
@@ -94,16 +101,11 @@ public class AvisoBorrar extends javax.swing.JInternalFrame {
             Logger.getLogger(ClientesAgregar.class.getName()).log(Level.SEVERE, null, ex);
           
         }
-          ClienteData cd = new ClienteData(conexion);         
+          CompraData cd = new CompraData(conexion);         
             c.setId(id);
-         cd.borrarCliente(c); 
+         cd.borrarCompra(c); 
          this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       
-         this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -72,6 +72,8 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tb_alojamiento = new javax.swing.JTable();
 
+        setMinimumSize(new java.awt.Dimension(800, 400));
+
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,19 +122,21 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(738, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addGap(30, 30, 30)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -144,7 +148,7 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         AlojamientoAgregar lc = new AlojamientoAgregar();
         lc.escritorio = escritorio;
         lc.setVisible(true);
-         escritorio.add(lc).setSize(600, 400);
+         escritorio.add(lc).setSize(300, 275);
         escritorio.moveToFront(lc);
         lc.modo = 1;
                                        
@@ -192,7 +196,7 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
         escritorio.removeAll(); 
         escritorio.repaint();
         frmAgregar.setVisible(true);
-        escritorio.add(frmAgregar).setSize(400, 400);
+        escritorio.add(frmAgregar).setSize(300, 275);
         escritorio.moveToFront(frmAgregar);
         
         }

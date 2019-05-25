@@ -31,13 +31,16 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
         
     }
     
-    public ClientesAgregar(int id, String nombre, String documento, String celular) {
+    public ClientesAgregar(int id, int modo, String nombre, String documento, String celular) {
         initComponents();
         this.id = id;
+        this.modo = modo;
         this.nombre = nombre;
         this.documento = documento;
         this.celular = celular;
-        
+                if(modo == 2) {
+                btnAceptar.setText("Actualizar");
+            }
                 t_nombre.setText(nombre);
                 t_documento2.setText(documento);
                 t_celular2.setText(celular);
@@ -81,7 +84,7 @@ public class ClientesAgregar extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAceptar.setText("Aceptar");
+        btnAceptar.setText("Agregar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);

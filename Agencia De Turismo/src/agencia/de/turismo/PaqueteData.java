@@ -136,7 +136,7 @@ public List<Traslado> listadoTrasladoPorAlojamiento(int idAlojamiento) {
     
     List<Traslado> b = new ArrayList<Traslado>();
     try {
-        String sql = "SELECT p.id, p.id_traslado, t.patente, t.tipo_de_transporte FROM paquete p, traslado t, alojamiento a WHERE p.id_traslado = t.id AND p.id_alojamiento = a.id AND p.id_alojamiento=?"; 
+        String sql = "SELECT p.id, p.id_traslado, t.patente, t.tipo_de_transporte, t.cantidad_maxima_de_pasajeros FROM paquete p, traslado t, alojamiento a WHERE p.id_traslado = t.id AND p.id_alojamiento = a.id AND p.id_alojamiento=?"; 
          PreparedStatement statement = connection.prepareStatement(sql);
          statement.setInt(1, idAlojamiento);
          ResultSet rs = statement.executeQuery(); 
@@ -146,6 +146,7 @@ public List<Traslado> listadoTrasladoPorAlojamiento(int idAlojamiento) {
             traslado.setId(rs.getInt("id_traslado"));
             traslado.setPatente(rs.getString("patente"));
             traslado.setTipoDeTransporte(rs.getString("tipo_de_transporte"));
+            traslado.setCantidadMaximaDePasajeros(rs.getInt("cantidad_maxima_de_pasajeros"));
             b.add(traslado);
         }
          statement.close();
@@ -154,6 +155,26 @@ public List<Traslado> listadoTrasladoPorAlojamiento(int idAlojamiento) {
         
     }
    return b;
-} 
+}
+public Paquete paquetePorAlojamientoTraslado(int idAlojamiento, int idTraslado) {
+        Paquete b = new Paquete();
+           try {
+               String sql = "SELECT id FROM paquete WHERE id_alojamiento = ? AND id_traslado = ?" ; 
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setInt(1, idAlojamiento);
+                statement.setInt(2, idTraslado);
+                
+                ResultSet rs = statement.executeQuery();
+                    
+                while(rs.next()) {
+                   b.setId(rs.getInt("id"));
+                }
+                statement.close();
+                } catch(Exception ex) {
+                    System.out.println(ex.getMessage());
+
+                }
+                return b;
+    }
 }
 
