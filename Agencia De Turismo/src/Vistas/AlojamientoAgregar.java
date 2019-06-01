@@ -139,7 +139,7 @@ private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {
 
         jLabel1.setText("Capacidad:");
 
-        jLabel2.setText("Costo:");
+        jLabel2.setText("Costo por noche:");
 
         jLabel3.setText("AdmiteFumadores:");
 

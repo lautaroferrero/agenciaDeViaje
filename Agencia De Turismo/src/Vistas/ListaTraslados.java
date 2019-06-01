@@ -99,7 +99,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -116,6 +116,14 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tb_traslado);
+        if (tb_traslado.getColumnModel().getColumnCount() > 0) {
+            tb_traslado.getColumnModel().getColumn(1).setResizable(false);
+            tb_traslado.getColumnModel().getColumn(2).setResizable(false);
+            tb_traslado.getColumnModel().getColumn(3).setResizable(false);
+            tb_traslado.getColumnModel().getColumn(4).setResizable(false);
+            tb_traslado.getColumnModel().getColumn(5).setResizable(false);
+            tb_traslado.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,7 +162,7 @@ public class ListaTraslados extends javax.swing.JInternalFrame {
         
         avisoBorrar.id = (int)tb_traslado.getValueAt(row, 0);
        
-        escritorio.add(avisoBorrar).setSize(400, 400);
+        escritorio.add(avisoBorrar).setSize(270, 125);
         escritorio.moveToFront(avisoBorrar);
         
         }

@@ -39,7 +39,7 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
                 jButton1.setText("Actualizar");
                 }
                 t_patente.setText(patente);
-                t_tipo.setText(tipo);
+                cmb_tipo.setSelectedItem(tipo);
                 t_capacidad.setValue(capacidad);
                 t_costoXKm.setValue(costo);
         
@@ -65,9 +65,9 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         t_patente = new javax.swing.JTextField();
-        t_tipo = new javax.swing.JTextField();
         t_capacidad = new javax.swing.JSpinner();
         t_costoXKm = new javax.swing.JSpinner();
+        cmb_tipo = new javax.swing.JComboBox<>();
 
         jTextField1.setText("jTextField1");
 
@@ -110,6 +110,8 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
             }
         });
 
+        cmb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auto", "Camioneta", "Colectivo", "Auto de lujo", "Moto", "Limusina", "Jet", "Avion", "Helicoptero", "Avioneta" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,8 +125,8 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(t_tipo)
-                            .addComponent(t_patente)))
+                            .addComponent(t_patente)
+                            .addComponent(cmb_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,9 +136,8 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(t_capacidad, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(t_costoXKm, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(t_costoXKm, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +151,7 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(t_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -163,7 +164,7 @@ public class TrasladosAgregar extends javax.swing.JInternalFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,7 +198,7 @@ if(modo == 1) {
             TrasladoData cd = new TrasladoData(conexion);         
             c.setCantidadMaximaDePasajeros((int) t_capacidad.getValue());
             c.setPatente( t_patente.getText());
-            c.setTipoDeTransporte(t_tipo.getText());
+            c.setTipoDeTransporte((String) cmb_tipo.getSelectedItem());
             c.setCostoPorKilometro((int) t_costoXKm.getValue());
             cd.agregarTraslado(c); 
             this.dispose();
@@ -217,7 +218,7 @@ if(modo == 1) {
             TrasladoData cd = new TrasladoData(conexion);
             c.setId(id);
             patente = t_patente.getText();
-            tipo = t_tipo.getText();
+            tipo = (String) cmb_tipo.getSelectedItem();
             costo = (int) t_costoXKm.getValue();
             capacidad = (int) t_capacidad.getValue();
             cd.actualizarTraslado(c, patente, tipo, capacidad, costo);
@@ -227,6 +228,7 @@ if(modo == 1) {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmb_tipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -240,6 +242,5 @@ if(modo == 1) {
     private javax.swing.JSpinner t_capacidad;
     private javax.swing.JSpinner t_costoXKm;
     private javax.swing.JTextField t_patente;
-    private javax.swing.JTextField t_tipo;
     // End of variables declaration//GEN-END:variables
 }

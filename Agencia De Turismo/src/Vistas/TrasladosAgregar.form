@@ -54,8 +54,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="t_tipo" max="32767" attributes="0"/>
                           <Component id="t_patente" max="32767" attributes="0"/>
+                          <Component id="cmb_tipo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -70,10 +70,9 @@
                           <Component id="t_capacidad" pref="100" max="32767" attributes="0"/>
                           <Component id="t_costoXKm" pref="100" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,7 +90,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="t_tipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmb_tipo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -108,7 +107,7 @@
                   <Component id="jButton1" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,11 +154,30 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="t_patenteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="t_tipo">
-    </Component>
     <Component class="javax.swing.JSpinner" name="t_capacidad">
     </Component>
     <Component class="javax.swing.JSpinner" name="t_costoXKm">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmb_tipo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Auto"/>
+            <StringItem index="1" value="Camioneta"/>
+            <StringItem index="2" value="Colectivo"/>
+            <StringItem index="3" value="Auto de lujo"/>
+            <StringItem index="4" value="Moto"/>
+            <StringItem index="5" value="Limusina"/>
+            <StringItem index="6" value="Jet"/>
+            <StringItem index="7" value="Avion"/>
+            <StringItem index="8" value="Helicoptero"/>
+            <StringItem index="9" value="Avioneta"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

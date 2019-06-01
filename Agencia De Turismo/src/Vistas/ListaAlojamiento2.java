@@ -92,9 +92,16 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
                 "ID", "Direccion", "Capacidad", "Costo por noche", "Admite fumadores", "Tipo de alojamiento", "", ""
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -124,10 +131,10 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE))
+                        .addGap(0, 878, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -172,7 +179,7 @@ public class ListaAlojamiento2 extends javax.swing.JInternalFrame {
     
         AvisoBorrarA.id = (int) tb_alojamiento.getValueAt(row, 0);
        
-        escritorio.add(avisoBorrar).setSize(400, 400);
+        escritorio.add(avisoBorrar).setSize(270, 125);
         escritorio.moveToFront(avisoBorrar);
         } 
         

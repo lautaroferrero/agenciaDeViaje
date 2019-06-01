@@ -152,7 +152,7 @@ public class ListaClientes extends javax.swing.JInternalFrame {
         
         avisoBorrar.id = (int)tb_cliente.getValueAt(row, 0);
        
-        escritorio.add(avisoBorrar).setSize(285, 125);
+        escritorio.add(avisoBorrar).setSize(270, 125);
         escritorio.moveToFront(avisoBorrar);
         
         }

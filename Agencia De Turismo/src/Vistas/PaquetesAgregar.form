@@ -53,11 +53,11 @@
                   <Component id="labelTraslado" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="cmb_alojamiento" pref="222" max="32767" attributes="0"/>
                   <Component id="cmb_traslado" max="32767" attributes="0"/>
-                  <Component id="cmb_alojamiento" min="-2" pref="159" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +79,7 @@
                   <Component id="btn_aceptar" pref="47" max="32767" attributes="0"/>
                   <Component id="btn_cancelar" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
